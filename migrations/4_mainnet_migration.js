@@ -1,8 +1,8 @@
 const TrustedPriceOracle = artifacts.require("TrustedPriceOracle");
 const MarketOracle = artifacts.require("MarketOracle");
 
-module.exports = async (deployer, network, [defaultAccount]) => {
-    if (network == "private") {
+module.exports = async (deployer, network) => {
+    if (network == "mainnet" || network == "mainnet-fork") {
         const {
             MARKET_ORACLE_OWNER,
             TRUSTED_PRICE_ORACLE_OWNER,

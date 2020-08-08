@@ -66,6 +66,12 @@ module.exports = {
             //confirmations: 2,    // # of confs to wait between deployments. (default: 0)
             //timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
             //skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+        },
+
+        mainnet: {
+            provider: new HDWalletProvider(MNEMONIC, WEB3_PROVIDER_URL),
+            network_id: 1, // Mainnet's id
+            gasPrice: 80000000000
         }
 
         // Useful for private networks
@@ -85,7 +91,7 @@ module.exports = {
     compilers: {
         solc: {
             //version: "0.4.24",    // Fetch exact version from solc-bin (default: truffle's version)
-            version: "0.6.6" // Fetch exact version from solc-bin (default: truffle's version)
+            version: "0.6.6", // Fetch exact version from solc-bin (default: truffle's version)
             // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
             // settings: {          // See the solidity docs for advice about optimization and evmVersion
             //  optimizer: {
@@ -94,6 +100,14 @@ module.exports = {
             //  },
             //  evmVersion: "byzantium"
             // }
+            settings: {
+                // See the solidity docs for advice about optimization and evmVersion
+                optimizer: {
+                    enabled: true,
+                    runs: 20000
+                },
+                evmVersion: "constantinople"
+            }
         }
     },
     plugins: ["solidity-coverage"]

@@ -682,7 +682,7 @@ contract("MarketOracle", (accounts) => {
                 receipt = receipts[0];
             });
             it("takes the highest gas cost [@skip-on-coverage]", async () => {
-                assert.equal(receipt.gasUsed, 239910);
+                assert.equal(receipt.gasUsed, 234507);
             });
             it("emits a volatility calculated event", async () => {
                 const event = receipt.logs[0];
@@ -702,7 +702,7 @@ contract("MarketOracle", (accounts) => {
                 receipt = tx.receipt;
             });
             it("takes the lowest gas cost [@skip-on-coverage]", async () => {
-                assert.equal(receipt.gasUsed, 33344);
+                assert.equal(receipt.gasUsed, 32944);
             });
             it("does not emit a volatility calculated event", async () => {
                 assert.equal(receipt.logs.length, 0);
@@ -722,7 +722,7 @@ contract("MarketOracle", (accounts) => {
                     receipt = receipts[1];
                 });
                 it("takes low gas cost [@skip-on-coverage]", async () => {
-                    assert.equal(receipt.gasUsed, 80185);
+                    assert.equal(receipt.gasUsed, 78664);
                 });
                 it("emits a volatility calculated event", async () => {
                     const event = receipt.logs[0];
@@ -743,7 +743,7 @@ contract("MarketOracle", (accounts) => {
                     receipt = receipts[3];
                 });
                 it("takes low gas cost [@skip-on-coverage]", async () => {
-                    assert.equal(receipt.gasUsed, 89382);
+                    assert.equal(receipt.gasUsed, 87478);
                 });
                 it("emits a volatility calculated event", async () => {
                     const event = receipt.logs[0];
@@ -764,7 +764,7 @@ contract("MarketOracle", (accounts) => {
                     receipt = receipts[4];
                 });
                 it("takes high gas cost [@skip-on-coverage]", async () => {
-                    assert.equal(receipt.gasUsed, 176002);
+                    assert.equal(receipt.gasUsed, 170498);
                 });
                 it("emits a volatility calculated event", async () => {
                     const event = receipt.logs[0];
@@ -785,7 +785,7 @@ contract("MarketOracle", (accounts) => {
                     receipt = receipts[5];
                 });
                 it("takes as high gas cost as when price was updated 12 times [@skip-on-coverage]", async () => {
-                    assert.equal(receipt.gasUsed, 175982);
+                    assert.equal(receipt.gasUsed, 170500);
                 });
                 it("emits a volatility calculated event", async () => {
                     const event = receipt.logs[0];
@@ -806,7 +806,7 @@ contract("MarketOracle", (accounts) => {
                     receipt = receipts[6];
                 });
                 it("takes as high gas cost as when price was updated 12 times [@skip-on-coverage]", async () => {
-                    assert.equal(receipt.gasUsed, 176022);
+                    assert.equal(receipt.gasUsed, 170496);
                 });
                 it("emits a volatility calculated event", async () => {
                     const event = receipt.logs[0];
