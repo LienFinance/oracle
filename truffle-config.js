@@ -61,7 +61,7 @@ module.exports = {
         // Useful for deploying to a public network.
         // NB: It's important to wrap the provider as a function.
         ropsten: {
-            provider: new HDWalletProvider(MNEMONIC, WEB3_PROVIDER_URL),
+            provider: () => new HDWalletProvider(MNEMONIC, WEB3_PROVIDER_URL),
             network_id: 3 // Ropsten's id
             //confirmations: 2,    // # of confs to wait between deployments. (default: 0)
             //timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
@@ -69,7 +69,7 @@ module.exports = {
         },
 
         mainnet: {
-            provider: new HDWalletProvider(MNEMONIC, WEB3_PROVIDER_URL),
+            provider: () => new HDWalletProvider(MNEMONIC, WEB3_PROVIDER_URL),
             network_id: 1, // Mainnet's id
             gasPrice: 80000000000
         }
