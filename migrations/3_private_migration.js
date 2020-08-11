@@ -1,5 +1,7 @@
 const TrustedPriceOracle = artifacts.require("TrustedPriceOracle");
+const ChainlinkPriceOracle = artifacts.require("ChainlinkPriceOracle");
 const MarketOracle = artifacts.require("MarketOracle");
+
 
 module.exports = async (deployer, network, [defaultAccount]) => {
     if (network == "private") {
@@ -8,9 +10,11 @@ module.exports = async (deployer, network, [defaultAccount]) => {
             TRUSTED_PRICE_ORACLE_OWNER,
             CHAINLINK_ADDRESS
         } = process.env;
-        await deployer.deploy(TrustedPriceOracle, true);
+        await deployer.deploy(TrustedPriceOracle);
+        await deployer.deploy(ChainlinkPriceOracle, CHAINLINK_ADDRESS);
         const to = await TrustedPriceOracle.deployed();
-        await deployer.deploy(MarketOracle, CHAINLINK_ADDRESS, to.address);
+        const co = await ChainlinkPriceOracle.deployed();
+        await deployer.deploy(MarketOracle, co.address, to.address);
         const mo = await MarketOracle.deployed();
         await to.transferOwnership(TRUSTED_PRICE_ORACLE_OWNER);
         await mo.transferOwnership(MARKET_ORACLE_OWNER);
